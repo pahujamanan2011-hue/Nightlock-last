@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NightLock: Last Light</title>
+
+<style>
+  *, *::before, *::after {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html, body {
+    width:100%;
+    height:100%;
+    background:#000;
+    overflow:hidden;
+    font-family:monospace;
+  }
+
+  #wrap {
+    position:relative;
+    width:100%;
+    height:100%;
+  }
+
+  canvas {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    image-rendering:pixelated;
+    image-rendering:crisp-edges;
+  }
+
+  #gameCanvas {
+    z-index:1;
+    cursor:crosshair;
+  }
+
+  #uiCanvas {
+    z-index:2;
+    pointer-events:none;
+  }
+
+  .hidden {
+    display:none;
+  }
+
+  #menu {
+    position:absolute;
+    inset:0;
+    z-index:10;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    background:rgba(0,0,0,0.85);
+  }
+
+  #menu h1 {
+    color:#ff3300;
+    font-size:48px;
+  }
+
+  #menu button {
+    width:220px;
+    padding:15px;
+    font-size:20px;
+    border:none;
+    background:#220000;
+    color:#ff6600;
+    cursor:pointer;
+  }
+
+  #menu button:hover {
+    background:#440000;
+  }
+
+  #hud {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:5;
+    pointer-events:none;
+    color:white;
+    padding:10px;
+  }
+
+  #score,
+  #ammoText,
+  #weaponIcon,
+  #livesUI {
+    margin-bottom:6px;
+    font-size:18px;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="menu">
+  <h1>NightLock: Last Light</h1>
+  <button id="startBtn">START GAME</button>
+  <button id="quitBtn">QUIT</button>
+</div>
+
+<div id="hud" class="hidden">
+  <div id="score">0</div>
+  <div id="ammoText">60</div>
+  <div id="weaponIcon">🔫</div>
+  <div id="livesUI"></div>
+</div>
+
+<div id="wrap">
+  <canvas id="gameCanvas"></canvas>
+  <canvas id="uiCanvas"></canvas>
+</div>
+
+<script src="game.js" defer></script>
+<!-- redeploy -->
+<!-- final redeploy -->
+</body>
+</html>
