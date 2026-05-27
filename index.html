@@ -224,17 +224,87 @@ canvas{
 
 </div>
 
+
 <script>
 
-const helpBtn = document.getElementById('helpBtn');
+window.addEventListener('DOMContentLoaded', () => {
 
-const helpPanel = document.getElementById('helpPanel');
+    const menu = document.getElementById('menu');
 
-helpBtn.addEventListener('click', () => {
+    const hud = document.getElementById('hud');
 
-    helpPanel.classList.toggle('hidden');
+    const startBtn = document.getElementById('startBtn');
+
+    const quitBtn = document.getElementById('quitBtn');
+
+    const helpBtn = document.getElementById('helpBtn');
+
+    const helpPanel = document.getElementById('helpPanel');
+
+    const gameCanvas = document.getElementById('gameCanvas');
+
+    // HELP BUTTON
+
+    helpBtn.addEventListener('click', () => {
+
+        helpPanel.classList.toggle('hidden');
+
+    });
+
+    // START BUTTON
+
+    startBtn.addEventListener('click', () => {
+
+        menu.style.display = 'none';
+
+        hud.classList.remove('hidden');
+
+        gameCanvas.focus();
+
+        // Tell game engine to start if variables exist
+
+        if (typeof gameRunning !== 'undefined') {
+
+            gameRunning = true;
+
+        }
+
+        if (typeof generateBarrels === 'function') {
+
+            generateBarrels();
+
+        }
+
+        if (typeof updateLives === 'function') {
+
+            updateLives();
+
+        }
+
+        if (typeof updateAmmoUI === 'function') {
+
+            updateAmmoUI();
+
+        }
+
+        if (typeof startBGMusic === 'function') {
+
+            startBGMusic();
+
+        }
+
+    });
+
+    // QUIT BUTTON
+
+    quitBtn.addEventListener('click', () => {
+
+        location.reload();
+
+    });
 
 });
+
 
 </script>
 
