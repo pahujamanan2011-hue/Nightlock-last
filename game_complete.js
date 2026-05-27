@@ -1137,7 +1137,7 @@ function drawFlashlight() {
     const px = canvas.width / 2;
     const py = canvas.height / 2;
     const angle = player.angle;
-    const lightRange = 550;
+    const lightRange = 380;
     const spread = Math.PI / 3;
 
     // Full dark overlay
