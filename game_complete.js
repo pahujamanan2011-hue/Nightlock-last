@@ -1470,7 +1470,7 @@ canvas.addEventListener('mousedown', () => {
 });
 
 // ── Start Button ──────────────────────────────────────────────
-startBtn.addEventListener('click', () => {
+
     menu.classList.add('hidden');
     hud.classList.remove('hidden');
     generateBarrels();
@@ -1482,7 +1482,7 @@ startBtn.addEventListener('click', () => {
     requestAnimationFrame(gameLoop);
 });
 
-quitBtn.addEventListener('click', () => {
+
     location.reload();
 });
 
