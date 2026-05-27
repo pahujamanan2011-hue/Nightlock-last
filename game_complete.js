@@ -29,8 +29,8 @@ window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
 // ── World Constants ──────────────────────────────────────────
-const WORLD_WIDTH = 4000;
-const WORLD_HEIGHT = 4000;
+const WORLD_WIDTH = window.innerWidth * 1.5;
+const WORLD_HEIGHT = window.innerHeight * 1.5;
 
 // ── Game State ───────────────────────────────────────────────
 let gameRunning = false;
