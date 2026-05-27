@@ -1142,7 +1142,7 @@ function drawFlashlight() {
 
     // Full dark overlay
     ctx.save();
-    ctx.fillStyle = 'rgba(0,0,0,0.94)';
+    ctx.fillStyle = 'rgba(0,0,0,0.75)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Cut out light cone
@@ -1218,29 +1218,17 @@ function drawHUD() {
 
     // CRT scanlines
     ctx.save();
-    ctx.globalAlpha = 0.03;
+    ctx.globalAlpha = 0.015;
     ctx.fillStyle = '#000';
-    for (let y = 0; y < canvas.height; y += 2) {
+
+    for (let y = 0; y < canvas.height; y += 8) {
         ctx.fillRect(0, y, canvas.width, 1);
     }
-    ctx.restore();
+
+ctx.restore();
 
     // Vignette
-    const vig = ctx.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        canvas.height * 0.2,
-        canvas.width / 2,
-        canvas.height / 2,
-        canvas.height * 0.8
-    );
-    vig.addColorStop(0, 'rgba(0,0,0,0)');
-    vig.addColorStop(1, 'rgba(0,0,0,0.6)');
-    ctx.fillStyle = vig;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Low health pulse
-    if (player.lives === 1 && gameRunning) {
+        if (player.lives === 1 && gameRunning) {
         const pulse = 0.05 + Math.abs(Math.sin(frameCount * 0.08)) * 0.15;
         ctx.fillStyle = `rgba(160,0,0,${pulse})`;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
