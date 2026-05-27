@@ -1469,22 +1469,52 @@ canvas.addEventListener('mousedown', () => {
     }
 });
 
-// ── Start Button ──────────────────────────────────────────────
+// ── MENU BUTTONS ─────────────────────────────────────────────
+
+// START BUTTON
+startBtn.addEventListener('click', () => {
 
     menu.classList.add('hidden');
     hud.classList.remove('hidden');
+
+    zombies = [];
+    barrels = [];
+    bullets = [];
+    particles = [];
+    bloodPools = [];
+    powerups = [];
+    boss = null;
+
+    player.x = WORLD_WIDTH / 2;
+    player.y = WORLD_HEIGHT / 2;
+
+    player.lives = 3;
+    player.score = 0;
+
+    player.ammo = {
+        pistol: 60,
+        shotgun: 20
+    };
+
+    player.weapon = 'pistol';
+
     generateBarrels();
     updateLives();
     updateAmmoUI();
-    startBGMusic();
+
     gameRunning = true;
     frameCount = 0;
-    requestAnimationFrame(gameLoop);
+
+    startBGMusic();
 });
 
+// QUIT BUTTON
+quitBtn.addEventListener('click', () => {
 
     location.reload();
+
 });
 
-// Initialize
+// ── START ENGINE ─────────────────────────────────────────────
+
 requestAnimationFrame(gameLoop);
